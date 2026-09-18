@@ -6,8 +6,9 @@ namespace Unity.U2D.Welcome
     class Welcome2DScript : ScriptableObject
     {
         public static void Open2DLandingPage()
-        {
+        { 
             Application.OpenURL("https://unity.com/features/2d");
+            
         }
     }
 }
