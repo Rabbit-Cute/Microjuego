@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.identity; // Rotación inicial
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Obtener la entrada (Input) del jugador para rotación y empuje
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bullet = Instantiate(BulletPrefab, Gun.transform.position, Quaternion.identity); // Instanciar la bala en la posición del Gun
-            Bullet balascript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
-            balascript.targetVector = transform.right; // Asignar la dirección de la bala según la dirección del jugador
+            Bullet balaScript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
+            balaScript.targetVector = transform.right; // Asignar la dirección de la bala según la dirección del jugador
         }
     }
 
