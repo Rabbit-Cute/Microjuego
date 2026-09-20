@@ -3,8 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Ajuste del sensación de movimiento del jugador
-    [SerializeField] private float thrustForce = 20f;
-    [SerializeField] private float rotationSpeed = 120f;
+    public float thrustForce = 20f;
+    public float rotationSpeed = 120f;
+
+    public GameObject Gun, BulletPrefab; // Prefab de la bala
 
     private Vector2 thrustDirection;
     private Rigidbody rigidbody;
@@ -32,6 +34,13 @@ public class Player : MonoBehaviour
 
         // Aplicar fuerza de empuje en la dirección calculada
         rigidbody.AddForce(thrust * thrustDirection);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject bullet = Instantiate(BulletPrefab, Gun.transform.position, Quaternion.identity); // Instanciar la bala en la posición del Gun
+            Bullet balascript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
+            balascript.targetVector = transform.right; // Asignar la dirección de la bala según la dirección del jugador
+        }
     }
 
 }
