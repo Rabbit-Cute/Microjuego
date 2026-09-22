@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // Ajuste del sensación de movimiento del jugador
-    public float thrustForce = 20f;
+    public float thrustForce = 1.5f;
     public float rotationSpeed = 120f;
 
     public GameObject Gun, BulletPrefab; // Prefab de la bala
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         // Aplicar fuerza de empuje en la dirección calculada
         rigidbody.AddForce(thrust * thrustDirection);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space)) // Disparar la bala al presionar Espacio
         {
             GameObject bullet = Instantiate(BulletPrefab, Gun.transform.position, Quaternion.identity); // Instanciar la bala en la posición del Gun
             Bullet balaScript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
@@ -43,12 +44,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    // TODO: 飞机摧毁代码 ,碰到陨石就会摧毁
-    void OnTriggerEnter2D(Collider2D other)
+    // Detectar colisiones con los meteoritos
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Meteor"))
+        if (collision.gameObject.CompareTag("Meteor"))
         {
-            //碰到陨石后执行的代码,应该是结束游戏(?)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            Debug.Log("He colisionado con otra cosa...");
         }
     }
 }

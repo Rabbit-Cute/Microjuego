@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int speed = 10; // Velocidad de la bala
-    public float maxlifeTime = 5; // Tiempo de vida
-    public Vector3 targetVector; // Dirección de la bala, que depende del ship
+    public float speed = 10f; // Velocidad de la bala
+    public float maxlifeTime = 5f; // Tiempo de vida
+    public Vector2 targetVector; // Dirección de la bala, que depende del ship
 
     void Start()
     {
@@ -18,12 +18,12 @@ public class Bullet : MonoBehaviour
         transform.Translate(targetVector * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Enemy")
+        if(collision.gameObject.CompareTag("Meteor"))
         {
-            Destroy(other.gameObject); // Destruir el enemigo al colisionar con la bala
-            Destroy(gameObject); // Destruir la bala al colisionar con un enemigo
+            Destroy(collision.gameObject); // Destruir el meteorito
+            Destroy(gameObject); // Destruir la bala
         }
     }
 }
