@@ -43,4 +43,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    // TODO: 飞机摧毁代码 ,碰到陨石就会摧毁
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Meteor"))
+        {
+            //碰到陨石后执行的代码,应该是结束游戏(?)
+        }
+    }
 }
