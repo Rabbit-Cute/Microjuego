@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     private Vector2 thrustDirection;
     private Rigidbody2D rigidbody;
 
+    public float xBorderLimit = 2000f;
+    public float yBorderLimit = 1000f;
+
     public static int score = 0; // Puntos iniciales del jugador
     public float tiempoSobrevivencia = 0f; // Tiempo de supervivencia del jugador
     public TextMeshProUGUI scoreText;
@@ -40,6 +43,19 @@ public class Player : MonoBehaviour
 
         // Aplicar fuerza de empuje en la dirección calculada
         rigidbody.AddForce(thrust * thrustDirection);
+
+        Vector3 newPos = transform.position;
+
+        if (newPos.x > xBorderLimit)
+            newPos.x = -xBorderLimit + 1;
+        else if (newPos.x < -xBorderLimit)
+            newPos.x = xBorderLimit - 1;
+        else if (newPos.y > yBorderLimit)
+            newPos.y = -yBorderLimit + 1;
+        else if (newPos.y < -yBorderLimit)
+            newPos.y = yBorderLimit - 1;
+
+        transform.position = newPos;
 
         if(Input.GetKeyDown(KeyCode.Space)) // Disparar la bala al presionar Espacio
         {
