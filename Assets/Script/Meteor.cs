@@ -17,7 +17,13 @@ public class Meteor : MonoBehaviour
             speed = 6f;
         else
             speed = 10f;
+
+        // rotar imagen
+        Vector3 flameDir = -moveDirection;
+        float angle = Mathf.Atan2(flameDir.y, flameDir.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
 
     // desactivar cuando sale del mapa
     void Update()

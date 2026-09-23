@@ -57,11 +57,14 @@ public class Player : MonoBehaviour
 
         transform.position = newPos;
 
-        if(Input.GetKeyDown(KeyCode.Space)) // Disparar la bala al presionar Espacio
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(BulletPrefab, Gun.transform.position, Quaternion.identity); // Instanciar la bala en la posición del Gun
-            Bullet balaScript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
-            balaScript.targetVector = transform.right; // Asignar la dirección de la bala según la dirección del jugador
+            GameObject bullet = BulletPool.Instance.Get();
+            bullet.transform.position = Gun.transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+
+            Bullet balaScript = bullet.GetComponent<Bullet>();
+            balaScript.Activate(transform.right);
         }
 
         tiempoSobrevivencia += Time.deltaTime; // Incrementar el tiempo de supervivencia

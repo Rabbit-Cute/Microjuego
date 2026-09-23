@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1cc94bd7749bec4eae844a94ef8eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 10
+  speed: 30
   maxlifeTime: 5
   targetVector: {x: 1, y: 0}
 --- !u!61 &-6630986825962703669
