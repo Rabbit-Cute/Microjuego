@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,10 @@ public class Player : MonoBehaviour
 
     private Vector2 thrustDirection;
     private Rigidbody rigidbody;
+
+    public static int score = 0; // Puntos iniciales del jugador
+    public float tiempoSobrevivencia = 0f; // Tiempo de supervivencia del jugador
+    public TextMeshProUGUI scoreText;
 
     void Start()
     {
@@ -42,6 +47,14 @@ public class Player : MonoBehaviour
             Bullet balaScript = bullet.GetComponent<Bullet>(); // Obtener el script de la bala
             balaScript.targetVector = transform.right; // Asignar la dirección de la bala según la dirección del jugador
         }
+
+        tiempoSobrevivencia += Time.deltaTime; // Incrementar el tiempo de supervivencia
+        if(tiempoSobrevivencia >= 1f) // Cada segundo, incrementar el puntaje
+        {
+            score += 10; // Incrementar el puntaje en 10
+            tiempoSobrevivencia = 0f; // Reiniciar el tiempo de supervivencia
+            UpdateScoreText(); // Actualizar el texto del score
+        }
     }
 
     // Detectar colisiones con los meteoritos
@@ -49,11 +62,19 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Meteor"))
         {
+            score = 0; // Reiniciar el puntuaje
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
         {
             Debug.Log("He colisionado con otra cosa...");
         }
+    }
+
+    private void UpdateScoreText()
+    {
+        // Buscar el objeto ScoreText en la escena
+        GameObject scoreTextObject = GameObject.FindGameObjectWithTag("score");
+        scoreTextObject.GetComponent<TextMeshProUGUI>().text = "Score: " + score; // Actualizar el texto del score
     }
 }

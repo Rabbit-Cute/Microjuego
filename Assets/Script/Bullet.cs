@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -22,8 +23,23 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Meteor"))
         {
+            IncrementScore(); // Incrementar el puntaje
             Destroy(collision.gameObject); // Destruir el meteorito
             Destroy(gameObject); // Destruir la bala
         }
+    }
+
+    private void IncrementScore()
+    {
+        Player.score += 50; // Incrementar el puntaje en 50
+        Debug.Log(Player.score); // Mostrar el puntaje en la consola
+        UpdateScoreText(); // Actualizar el texto del score
+    }
+
+    private void UpdateScoreText()
+    {
+        // Buscar el objeto ScoreText en la escena
+        GameObject scoreTextObject = GameObject.FindGameObjectWithTag("score");
+        scoreTextObject.GetComponent<TextMeshProUGUI>().text = "Score: " + Player.score; // Actualizar el texto del score
     }
 }
