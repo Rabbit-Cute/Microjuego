@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public GameObject Gun, BulletPrefab; // Prefab de la bala
 
     private Vector2 thrustDirection;
-    private Rigidbody rigidbody;
+    private Rigidbody2D rigidbody;
 
     public static int score = 0; // Puntos iniciales del jugador
     public float tiempoSobrevivencia = 0f; // Tiempo de supervivencia del jugador
@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         // Referencia al componente Rigidbody
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.useGravity = false; // Desactivar la gravedad, para que no caiga
+        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0f; // Desactivar la gravedad, para que no caiga
         transform.position = new Vector3(-18f, 0f, 0f); // Posición inicial
         transform.rotation = Quaternion.identity; // Rotación inicial
     }
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     }
 
     // Detectar colisiones con los meteoritos
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Meteor"))
         {
