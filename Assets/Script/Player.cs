@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     private Vector2 thrustDirection;
     private Rigidbody2D rigidbody;
 
-    public float xBorderLimit = 10f;
-    public float yBorderLimit = 10f;
+    public float xBorderLimit = 25f;
+    public float yBorderLimit = 15f;
 
     public static int score = 0; // Puntos iniciales del jugador
     public float tiempoSobrevivencia = 0f; // Tiempo de supervivencia del jugador
