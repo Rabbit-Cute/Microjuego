@@ -7,10 +7,11 @@ public class Bullet : MonoBehaviour
     public float maxlifeTime = 5f; // Tiempo de vida
     public Vector2 targetVector; // Dirección de la bala, que depende del ship
 
-    void Start()
+    public void Activate(Vector2 direction)
     {
-        // Destruir la bala después de un tiempo
-        Destroy(gameObject, maxlifeTime);
+        targetVector = direction.normalized;
+        CancelInvoke();
+        Invoke(nameof(Recycle), maxlifeTime);
     }
 
     void Update()
@@ -19,13 +20,15 @@ public class Bullet : MonoBehaviour
         transform.Translate(targetVector * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.gameObject.CompareTag("Meteor"))
+        if(other.CompareTag("Meteor"))
         {
+            Meteor m = other.GetComponent<Meteor>();
+            if (m != null) m.TakeDamage();
+
             IncrementScore(); // Incrementar el puntaje
-            Destroy(collision.gameObject); // Destruir el meteorito
-            Destroy(gameObject); // Destruir la bala
+            Recycle(); // Devolver la bala al pool
         }
     }
 
@@ -41,5 +44,12 @@ public class Bullet : MonoBehaviour
         // Buscar el objeto ScoreText en la escena
         GameObject scoreTextObject = GameObject.FindGameObjectWithTag("score");
         scoreTextObject.GetComponent<TextMeshProUGUI>().text = "Score: " + Player.score; // Actualizar el texto del score
+    }
+
+    // Devolver al pool
+    void Recycle()
+    {
+        CancelInvoke();
+        BulletPool.Instance.Return(gameObject);
     }
 }
