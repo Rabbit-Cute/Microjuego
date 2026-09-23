@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meteor
   - score
+  - Bullet
   layers:
   - Default
   - TransparentFX
