@@ -13,12 +13,13 @@ public class Meteor : MonoBehaviour
         moveDirection = direction.normalized;
         poolSize = size;
 
+        // Meteor grande con velocidad 6 y pequeno con velocidad 10
         if(size == MeteorSize.Large)
             speed = 6f;
         else
             speed = 10f;
 
-        // rotar imagen
+        // Rotar imagen
         Vector3 flameDir = -moveDirection;
         float angle = Mathf.Atan2(flameDir.y, flameDir.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -48,8 +49,6 @@ public class Meteor : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             GameObject child = MeteorPool.Instance.Get(MeteorSize.Small);
-
-
             float angle;
 
             if(i == 0)
@@ -63,7 +62,7 @@ public class Meteor : MonoBehaviour
         }
     }
 
-    //recibir damage si se 
+    //Recibir damage si se choca con Bullet
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
