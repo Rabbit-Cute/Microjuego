@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Meteor"))
         {
             score = 0; // Reiniciar el puntuaje
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            FindObjectOfType<GameOverMenu>().ShowGameOver();
         }
         else
         {
