@@ -1742,7 +1742,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 5.7044983, z: -296.17322, w: -120.663124}
+  m_margin: {x: 0, y: 5.7044983, z: -645.5732, w: -120.663124}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2065,6 +2065,8 @@ MonoBehaviour:
   startCanvas: {fileID: 220798154}
   player: {fileID: 1629464457}
   spawner: {fileID: 606765970}
+  scoreText: {fileID: 711484651}
+  stopRestartText: {fileID: 1281225450}
 --- !u!4 &1290488686
 Transform:
   m_ObjectHideFlags: 0
@@ -2775,7 +2777,7 @@ MonoBehaviour:
   xBorderLimit: 25
   yBorderLimit: 15
   tiempoSobrevivencia: 0
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 711484651}
 --- !u!70 &1629464463
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2871,6 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameOverMenu
   gameOverCanvas: {fileID: 1477215756}
   scoreText: {fileID: 711484651}
+  stopRestartText: {fileID: 1281225450}
 --- !u!4 &1736223963
 Transform:
   m_ObjectHideFlags: 0
