@@ -24,7 +24,7 @@ public class StartMenu : MonoBehaviour
     }
 
     void StartGame()
-    {
+    {   
         started = true;
         startCanvas.SetActive(false);
         player.SetActive(true);

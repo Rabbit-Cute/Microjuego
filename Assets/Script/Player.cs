@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+
+        if (GameOverMenu.isGameOver) return; 
         // Obtener la entrada (Input) del jugador para rotación y empuje
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
         float thrust = Input.GetAxis("Vertical") * thrustForce;
@@ -82,7 +84,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Meteor"))
         {
             score = 0; // Reiniciar el puntuaje
-            FindObjectOfType<GameOverMenu>().ShowGameOver();
+            FindFirstObjectByType<GameOverMenu>().ShowGameOver();
         }
         else
         {

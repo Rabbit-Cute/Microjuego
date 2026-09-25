@@ -7,7 +7,9 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
 
     void Update()
-    {
+    {   
+        if (GameOverMenu.isGameOver) return; // if game over block pause
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused) 
