@@ -2886,7 +2886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e4ef9cc5b098146a868b84ef3a934f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  thrustForce: 1.5
+  thrustForce: 10
   rotationSpeed: 120
   Gun: {fileID: 1319236404}
   BulletPrefab: {fileID: 5940073221881582267, guid: 40c1e0d2f368af9468425edaaff6f8d8, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // Ajuste del sensación de movimiento del jugador
-    public float thrustForce = 1.5f;
+    public float thrustForce = 10f;
     public float rotationSpeed = 120f;
 
     public GameObject Gun, BulletPrefab; // Prefab de la bala
