@@ -46,8 +46,8 @@ public class Player : MonoBehaviour
         // Aplicar fuerza de empuje en la dirección calculada
         rigidbody.AddForce(thrust * thrustDirection);
 
+        // Hacer pantalla infinita
         Vector3 newPos = transform.position;
-
         if (newPos.x > xBorderLimit)
             newPos.x = -xBorderLimit + 1;
         else if (newPos.x < -xBorderLimit)
@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
             newPos.y = -yBorderLimit + 1;
         else if (newPos.y < -yBorderLimit)
             newPos.y = yBorderLimit - 1;
-
         transform.position = newPos;
 
         if(Input.GetKeyDown(KeyCode.Space))

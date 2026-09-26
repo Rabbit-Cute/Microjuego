@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float spawnRatePerMinute = 30f;   // meteo que genera cada min
-    public float spawnRateIncrement = 1f;    // Aumentar numero de meteo por min
+    public float spawnRatePerMinute = 30f;   // Meteor que genera cada min
+    public float spawnRateIncrement = 1f;    // Aumentar numero de meteor por min
     public float xLimit = 40f;                // Radio de X
     public float yLimit = 24f;                // Radio de Y
     public float spawnOffset = 3f;           // offset del X y Y
 
-    private float spawnNext = 0;             // 下次生成的时间
+    private float spawnNext = 0;             // Tiempo de spawn del siguiente meteor
 
     void Update()
     {
