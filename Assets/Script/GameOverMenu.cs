@@ -15,14 +15,14 @@ public class GameOverMenu : MonoBehaviour
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f;
 
-        if (scoreText != null) scoreText.gameObject.SetActive(false);
-        if (stopRestartText != null) stopRestartText.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        stopRestartText.gameObject.SetActive(false);
     }
 
     public void Restart()
     {   
-        if (scoreText != null) scoreText.gameObject.SetActive(true);
-        if (stopRestartText != null) stopRestartText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        stopRestartText.gameObject.SetActive(true);
         isGameOver = false;
         Time.timeScale = 1f;
         Player.score = 0;

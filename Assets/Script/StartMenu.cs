@@ -17,8 +17,8 @@ public class StartMenu : MonoBehaviour
         Time.timeScale = 0f;                  // Freeze the game
         player.SetActive(false);
         spawner.SetActive(false);
-        if (scoreText != null) scoreText.gameObject.SetActive(false);
-        if (stopRestartText != null) stopRestartText.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        stopRestartText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -35,8 +35,8 @@ public class StartMenu : MonoBehaviour
         startCanvas.SetActive(false);
         player.SetActive(true);
         spawner.SetActive(true);
-        if (scoreText != null) scoreText.gameObject.SetActive(true);
-        if (stopRestartText != null) stopRestartText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        stopRestartText.gameObject.SetActive(true);
         Time.timeScale = 1f;                  
     }
 }
