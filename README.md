@@ -5,7 +5,6 @@ A simple 2D arcade game where you control a spaceship and shoot incoming asteroi
 ## 🛠️ Built With
 *   **Engine:** Unity
 *   **Language:** C#
-*   **Shaders:** ShaderLab
 
 ## 🎮 How to Play
 1. Go to the **Releases** section on the right side of this repository.
